@@ -7,12 +7,11 @@
   systemctl start docker.service   //启动docker <br> 
   systemctl enable docker.service    // 设置开机自启 <br> 
 
-  #docker 国内镜像加速：<br> 
-vim /etc/docker/daemon  <br> 
-
-{ <br> 
-  "registry-mirrors": ["https://registry.docker-cn.com"] <br> 
-} <br> 
+	#docker 国内镜像加速：<br> 
+		vim /etc/docker/daemon  <br> 
+	{ <br> 
+	"registry-mirrors": ["https://registry.docker-cn.com"] <br> 
+	} <br> 
 
 
 #目录结构：<br> 
