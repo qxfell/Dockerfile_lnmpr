@@ -16,7 +16,7 @@ vim /etc/docker/daemon  <br>
 
 
 #目录结构：<br> 
-.
+
 ├── mysql <br> 
 │   ├── Dockerfile <br> 
 │   └── my.cnf <br> 
@@ -33,8 +33,8 @@ vim /etc/docker/daemon  <br>
 │   ├── php-7.1.3.tar <br> 
 │   └── redis-3.1.3.tgz <br> 
 └── redis <br> 
-    ├── Dockerfile <br> 
-    └── redis.conf <br> 
+		├── Dockerfile <br> 
+		└── redis.conf <br> 
 	
 	#构建镜像
 	docker build -t nginx:v1 ./nginx
