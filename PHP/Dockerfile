@@ -41,3 +41,4 @@ EXPOSE 9000
 
 #启动php
 CMD /etc/init.d/php-fpm start && tail -F /var/log/messages
+#ceshi 
