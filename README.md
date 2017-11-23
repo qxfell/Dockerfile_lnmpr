@@ -1,6 +1,6 @@
 #使用Dockerfile 构建lnmp+redis容器
 
-安装docker-ce（社区版）
+#安装docker-ce（社区版）
   yum install -y yum-utils device-mapper-persistent-data lvm2    //安装依赖
   yum-config-manager  --add-repo https://download.docker.com/linux/centos/docker-ce.repo  //安装yum源
   yum -y install docker-ce    //安装docker-ce 
@@ -15,7 +15,7 @@ vim /etc/docker/daemon
 }
 
 
-目录结构：
+#目录结构：
 .
 ├── mysql
 │   ├── Dockerfile
