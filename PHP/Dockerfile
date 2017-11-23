@@ -2,7 +2,7 @@ FROM centos:6
 MAINTAINER AT < xfell96@163.com >
 
 ENV TZ "Asia/Shanghai"
-ENV PATH=$PATH:/usr/local/php/bin
+ENV TZ PATH=$PATH:/usr/local/php/bin
 
 COPY php-7.1.3.tar /tmp
 COPY redis-3.1.3.tgz /tmp
