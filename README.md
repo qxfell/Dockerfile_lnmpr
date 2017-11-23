@@ -7,34 +7,34 @@
   systemctl start docker.service   //启动docker <br> 
   systemctl enable docker.service    // 设置开机自启 <br> 
 
-  #docker 国内镜像加速：
-vim /etc/docker/daemon  
+  #docker 国内镜像加速：<br> 
+vim /etc/docker/daemon  <br> 
 
-{
-  "registry-mirrors": ["https://registry.docker-cn.com"]
-}
+{ <br> 
+  "registry-mirrors": ["https://registry.docker-cn.com"] <br> 
+} <br> 
 
 
-#目录结构：
+#目录结构：<br> 
 .
-├── mysql
-│   ├── Dockerfile
-│   └── my.cnf
-├── nginx
-│   ├── Dockerfile
-│   ├── html
-│   │   └── index.html
-│   ├── nginx.conf
-│   └── vhost
-│       └── www.conf
-├── php
-│   ├── composer.phar
-│   ├── Dockerfile
-│   ├── php-7.1.3.tar
-│   └── redis-3.1.3.tgz
-└── redis
-    ├── Dockerfile
-    └── redis.conf
+├── mysql <br> 
+│   ├── Dockerfile <br> 
+│   └── my.cnf <br> 
+├── nginx <br> 
+│   ├── Dockerfile <br> 
+│   ├── html <br> 
+│   │   └── index.html <br> 
+│   ├── nginx.conf <br> 
+│   └── vhost <br> 
+│       └── www.conf <br> 
+├── php <br> 
+│   ├── composer.phar <br> 
+│   ├── Dockerfile <br> 
+│   ├── php-7.1.3.tar <br> 
+│   └── redis-3.1.3.tgz <br> 
+└── redis <br> 
+    ├── Dockerfile <br> 
+    └── redis.conf <br> 
 	
 	#构建镜像
 	docker build -t nginx:v1 ./nginx
