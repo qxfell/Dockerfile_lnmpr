@@ -21,7 +21,6 @@ able-pcntl --enable-shmop --enable-soap --enable-sockets --enable-sysvsem --enab
         make && \
         make install && \
         cp ./php.ini-production /usr/local/php/lib/php.ini && \
-        cp ./php.ini-production /usr/local/php/etc/php.ini && \
         cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf && \
         cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf && \
         cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm && \
@@ -39,16 +38,6 @@ able-pcntl --enable-shmop --enable-soap --enable-sockets --enable-sysvsem --enab
 		echo "extension=redis.so" >>/usr/local/php/lib/php.ini && \
 		rm -rf /tmp/redis-3.1.3 && \
 		rm -rf /tmp/redis-3.1.3.tgz
-	
-ADD 	composer.phar /usr/local/bin/composer 
-RUN 	chmod 755 /usr/local/bin/composer
-        cd /tmp && \
-        tar xvf redis-3.1.3.tgz && \
-        cd /tmp/redis-3.1.3/ && \
-        /usr/local/php/bin/phpize && \
-        ./configure --with-php-config=/usr/local/php/bin/php-config && \
-        make && \
-        make install
 
 ADD     composer.phar /usr/local/bin/composer
 RUN     chmod 755 /usr/local/bin/composer
