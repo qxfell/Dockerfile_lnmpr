@@ -30,7 +30,6 @@ able-pcntl --enable-shmop --enable-soap --enable-sockets --enable-sysvsem --enab
         cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm && \
         sed -i "s/127.0.0.1/0.0.0.0/" /usr/local/php/etc/php-fpm.d/www.conf && \
         chmod +x /etc/init.d/php-fpm && \
-<<<<<<< HEAD
 		rm -rf /tmp/php-7.1.3 && \
 		rm -rf /tmp/php-7.1.3.tar && \
 		cd /tmp && \
@@ -46,7 +45,6 @@ able-pcntl --enable-shmop --enable-soap --enable-sockets --enable-sysvsem --enab
 	
 ADD 	composer.phar /usr/local/bin/composer 
 RUN 	chmod 755 /usr/local/bin/composer
-=======
         cd /tmp && \
         tar xvf redis-3.1.3.tgz && \
         cd /tmp/redis-3.1.3/ && \
@@ -57,17 +55,8 @@ RUN 	chmod 755 /usr/local/bin/composer
 
 ADD     composer.phar /usr/local/bin/composer
 RUN     chmod 755 /usr/local/bin/composer
->>>>>>> a77f7dbfa9365b3135e4096d17f75e8615d64898
 
 EXPOSE 9000
 
 #启动php
-<<<<<<< HEAD
 CMD /etc/init.d/php-fpm start && tail -F /var/log/messages
-
-
-
-
-=======
-CMD /etc/init.d/php-fpm start && tail -F /var/log/messages
->>>>>>> a77f7dbfa9365b3135e4096d17f75e8615d64898
