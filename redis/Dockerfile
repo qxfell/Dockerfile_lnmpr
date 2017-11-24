@@ -7,12 +7,12 @@ RUN yum install -y gcc automake autoconf libtool make gcc-c++ vixie-cron  wget z
     yum clean all
 
 RUN 	cd /tmp && \
-			tar zxvf redis-3.2.6.tar.gz && \
-			cd /tmp/redis-3.2.6 && \
-			make && \
-			make install && \
-			rm -rf /tmp/redis-3.2.6.tar.gz && \
-			rm -rf /tmp/redis-3.2.6
+		tar zxvf redis-3.2.6.tar.gz && \
+		cd /tmp/redis-3.2.6 && \
+		make && \
+		make install && \
+		rm -rf /tmp/redis-3.2.6.tar.gz && \
+		rm -rf /tmp/redis-3.2.6
 
 ADD redis.conf /etc/redis.conf
 
