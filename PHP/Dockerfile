@@ -20,11 +20,8 @@ sqli --with-openssl --with-pcre-regex --with-pdo-mysql --with-pdo-sqlite --with-
 able-pcntl --enable-shmop --enable-soap --enable-sockets --enable-sysvsem --enable-xml --enable-zip && \
         make && \
         make install && \
-<<<<<<< HEAD
         cp ./php.ini-production /usr/local/php/lib/php.ini && \
-=======
         cp ./php.ini-production /usr/local/php/etc/php.ini && \
->>>>>>> a77f7dbfa9365b3135e4096d17f75e8615d64898
         cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf && \
         cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf && \
         cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm && \
