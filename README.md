@@ -1,4 +1,4 @@
-#使用Dockerfile 构建lnmp+redis容器
+#Dockerfile 
 
 	#安装docker-ce（社区版）
 	yum install -y yum-utils device-mapper-persistent-data lvm2    //安装依赖 
