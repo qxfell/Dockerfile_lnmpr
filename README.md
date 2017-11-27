@@ -14,34 +14,7 @@
 	} 
 
 
-#目录结构：<br> 
 
-├── mysql <br> 
-│   ├── Dockerfile <br> 
-│   └── my.cnf <br> 
-├── nginx <br> 
-│   ├── Dockerfile <br> 
-│   ├── html <br> 
-│   │   └── index.html <br> 
-│   ├── nginx.conf <br> 
-│   └── vhost <br> 
-│       └── www.conf <br> 
-├── php <br> 
-│   ├── composer.phar <br> 
-│   ├── Dockerfile <br> 
-│   ├── php-7.1.3.tar <br> 
-│   └── redis-3.1.3.tgz <br> 
-└── redis <br> 
-		├── Dockerfile <br> 
-		└── redis.conf <br> 
-	
-	#构建镜像
-	docker build -t nginx:v1 ./nginx
-	docker build -t php:v1 ./php	
-	docker build -t mysql:v1 ./mysql
-	docker build -t redis:v1 ./redis
-	
-	
 	
 	
 	
