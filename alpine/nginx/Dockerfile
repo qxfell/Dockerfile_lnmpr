@@ -1,9 +1,11 @@
-FROM alpine
-MAINTAINER < xfell96@163.com >
+FROM alpine:3.6
+MAINTAINER xfell96@163.com 
 
 ENV TZ "Asia/Shanghai"
 
 # 软件包安装
+RUN echo "http://mirrors.ustc.edu.cn/alpine/v3.6/main/" >/etc/apk/repositories
+RUN echo "http://mirrors.ustc.edu.cn/alpine/v3.6/community/" >>/etc/apk/repositories
 RUN apk update
 RUN apk add nginx
 
