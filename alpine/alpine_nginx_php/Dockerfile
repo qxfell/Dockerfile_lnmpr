@@ -77,8 +77,7 @@ RUN sed -i "s|memory_limit =.*|memory_limit = ${PHP_MEMORY_LIMIT}|" /etc/php7/ph
 
 
 
-#ADD Nginx
-
+#Add nginx
 RUN apk add --no-cache nginx
 RUN mkdir /run/nginx
 RUN mkdir -p /usr/share/nginx/html
@@ -87,8 +86,19 @@ COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 RUN echo "ok" >/usr/share/nginx/html/index.html
 RUN echo "<?php phpinfo();" >/usr/share/nginx/html/test.php
 
+# Add supervisor
 RUN apk add supervisor \
 	&& rm -rf /var/cache/apk/*
+
+
+#Add crontab for laravel的任务调度
+#COPY ./crontabs/default /var/spool/cron/crontabs/
+#RUN cat /var/spool/cron/crontabs/default >> /var/spool/cron/crontabs/root
+#RUN mkdir -p /var/log/cron \
+#    && touch /var/log/cron/cron.log
+
+#VOLUME /var/log/cron
+
 
 								   
 VOLUME ["/usr/share/nginx/html", "/var/log/php7", "/var/run/"]
