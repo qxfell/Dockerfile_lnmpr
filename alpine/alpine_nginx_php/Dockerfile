@@ -47,13 +47,16 @@ RUN apk add php7  \
         php7-ldap  \
         php7-openssl  \
         php7-bcmath
+        php7-mongodb \
+        php7-memcached \
+        && rm -rf /var/cache/apk/*
 
 
 # Download Composer
 RUN php -r "readfile('http://install.phpcomposer.com/installer');" | php -- --install-dir=/bin/ --filename=composer
 RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
-COPY .php/www.conf /etc/php7/php-fpm.conf
-COPY .php/php-fpm.conf /etc/php7/php-fpm.conf
+COPY php/www.conf /etc/php7/php-fpm.d/
+COPY php/php-fpm.conf /etc/php7/
 
 RUN chmod 777 -R /var/log/
 
@@ -105,12 +108,12 @@ VOLUME ["/usr/share/nginx/html", "/var/log/php7", "/var/run/"]
 WORKDIR /usr/share/nginx/html
 								   
 VOLUME ["/etc/supervisor/conf.d", "/var/log/supervisor/"]
-COPY ./supervisord.conf /etc/supervisor/conf.d/
+COPY supervisor/conf.d/ /etc/supervisor/conf.d/
 
 WORKDIR /usr/share/nginx/html
-COPY ./entrypoint.sh /etc/nginx/entrypoint.sh
-RUN chmod +x /etc/nginx/entrypoint.sh
+COPY entrypoint.sh /usr/share/nginx/html/
+RUN chmod +x /usr/share/nginx/html/entrypoint.sh
 
 
 EXPOSE 80
-ENTRYPOINT ["/etc/nginx/entrypoint.sh"]
+ENTRYPOINT ["/usr/share/nginx/html/entrypoint.sh"]
