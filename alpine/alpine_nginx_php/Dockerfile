@@ -112,8 +112,8 @@ COPY supervisor/conf.d/ /etc/supervisor/conf.d/
 
 WORKDIR /usr/share/nginx/html
 COPY entrypoint.sh /usr/share/nginx/html/
-RUN chmod +x /usr/share/nginx/html/entrypoint.sh
+RUN chmod 0755 /usr/share/nginx/html/entrypoint.sh
 
 
 EXPOSE 80
-ENTRYPOINT ["/usr/share/nginx/html/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
