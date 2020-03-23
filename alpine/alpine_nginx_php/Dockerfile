@@ -53,8 +53,12 @@ RUN apk add php7  \
 
 
 # Download Composer
-RUN php -r "readfile('http://install.phpcomposer.com/installer');" | php -- --install-dir=/bin/ --filename=composer
-RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
+RUN cd /tmp && \
+    php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"  &&  \
+    php /tmp/composer-setup.php  &&  \
+    mv /tmp/composer.phar /bin/composer &&  \
+    composer config -g repo.packagist composer https://packagist.phpcomposer.com
+ 
 COPY php/www.conf /etc/php7/php-fpm.d/
 COPY php/php-fpm.conf /etc/php7/
 
