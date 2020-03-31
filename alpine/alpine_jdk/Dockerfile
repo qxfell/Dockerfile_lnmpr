@@ -1,3 +1,4 @@
+#Mini Alpine Image Dockerfile For java :
 FROM alpine:3.8
 MAINTAINER Dictator xfell96@163.com
 ARG TZ="Asia/Shanghai"
@@ -29,8 +30,13 @@ ENV JAVA_HOME=/usr/local/java
 ENV PATH ${PATH}:${JAVA_HOME}/bin
 ENV PATH=.:${JAVA_HOME}/bin:$PATH
 
+#ENV JAVA_HOME /usr/local/java
+#ENV JRE_HOME ${JAVA_HOME}/jre
+#ENV CLASSPATH .:${JAVA_HOME}/lib:${JRE_HOME}/lib
+#ENV PATH ${JAVA_HOME}/bin:$PATH
 
 RUN curl -Ls https://flynn-images.oss-cn-beijing.aliyuncs.com/jdk-8u131-linux-x6402.tar.gz >/tmp/jdk-8u131-linux-x64.tar.gz && \
+    touch /tmp/1.txt && \
     tar xf /tmp/jdk-8u131-linux-x64.tar.gz  -C /usr/local && \
     mv /usr/local/jdk1.8.0_131 /usr/local/java && \
     rm -rf /usr/local/java/*src.zip \
@@ -55,32 +61,4 @@ RUN curl -Ls https://flynn-images.oss-cn-beijing.aliyuncs.com/jdk-8u131-linux-x6
            /usr/local/java/jre/lib/amd64/libjfx*.so \
            rm -rf /tmp/jdk-8u131-linux-x64.tar.gz
 
-# Tomcat8
-ENV TOMCAT_HOME=/usr/local/tomcat
-ENV CATALINA_HOME=/usr/local/tomcat
-ENV PATH="${PATH}:/usr/local/tomcat/bin"
-ENV CATALINA_OUT=/dev/null
-ENV TOMCAT_MAJOR=8
-ENV TOMCAT_VERSION=8.5.3
-
-COPY entrypoint.sh web.xml context.xml /tmp/
-
-
-RUN curl -Ls -o /tmp/apache-tomcat.tar.gz https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.53/bin/apache-tomcat-8.5.53.tar.gz  && \
-    tar xf /tmp/apache-tomcat.tar.gz -C /tmp/ && \
-    mv /tmp/apache-tomcat-8.5.53 /usr/local/tomcat && \
-    mv /tmp/entrypoint.sh /bin/entrypoint.sh && \
-    chmod 0755 /bin/entrypoint.sh && \
-    mv /tmp/web.xml /tmp/context.xml ${TOMCAT_HOME}/conf/ && \
-    rm -rf ${TOMCAT_HOME}/webapps/* && \
-    apk add --no-cache su-exec && \
-    rm -rf /tmp/* /var/cache/apk/* && \
-    USER_ID=${TOMCAT_USER_ID:-1000} && \
-    GROUP_ID=${TOMCAT_GROUP_ID:-1000} && \
-    addgroup -g ${GROUP_ID} tomcat && \
-    adduser -u ${USER_ID} -G tomcat -h ${CATALINA_HOME} -D -s /sbin/nologin tomcat && \
-    chown -L -R tomcat:tomcat ${CATALINA_HOME} && chmod 400 ${CATALINA_HOME}/conf/* && \
-    sync 
-
-
-EXPOSE 8080
+CMD [ "tail", "-F" ,"/tmp/1.txt" ]
