@@ -1,6 +1,6 @@
 #Mini Alpine Image Dockerfile For java :
 FROM alpine:3.8
-MAINTAINER Dictator xfell96@163.com
+MAINTAINER Author xfell96@163.com
 ARG TZ="Asia/Shanghai"
 ENV TZ ${TZ}
 ENV LANG en_US.UTF-8
@@ -30,11 +30,6 @@ ENV JAVA_HOME=/usr/local/java
 ENV PATH ${PATH}:${JAVA_HOME}/bin
 ENV PATH=.:${JAVA_HOME}/bin:$PATH
 
-#ENV JAVA_HOME /usr/local/java
-#ENV JRE_HOME ${JAVA_HOME}/jre
-#ENV CLASSPATH .:${JAVA_HOME}/lib:${JRE_HOME}/lib
-#ENV PATH ${JAVA_HOME}/bin:$PATH
-
 RUN curl -Ls https://flynn-images.oss-cn-beijing.aliyuncs.com/jdk-8u131-linux-x6402.tar.gz >/tmp/jdk-8u131-linux-x64.tar.gz && \
     touch /tmp/1.txt && \
     tar xf /tmp/jdk-8u131-linux-x64.tar.gz  -C /usr/local && \
@@ -61,4 +56,3 @@ RUN curl -Ls https://flynn-images.oss-cn-beijing.aliyuncs.com/jdk-8u131-linux-x6
            /usr/local/java/jre/lib/amd64/libjfx*.so \
            rm -rf /tmp/jdk-8u131-linux-x64.tar.gz
 
-CMD [ "tail", "-F" ,"/tmp/1.txt" ]
