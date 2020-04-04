@@ -1,5 +1,5 @@
 FROM alpine:3.8
-MAINTAINER Dictator xfell96@163.com
+MAINTAINER Author xfell96@163.com
 ARG TZ="Asia/Shanghai"
 ENV TZ ${TZ}
 ENV LANG en_US.UTF-8
