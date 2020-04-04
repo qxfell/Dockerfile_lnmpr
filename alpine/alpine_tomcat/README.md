@@ -1,4 +1,5 @@
 ### Dockerfile Example
+```
 FROM registry.cn-beijing.aliyuncs.com/qiangxianfei/alpine_tomcat:v2.0
 LABEL maintainer="flynn <xfell96@163.com>"
 
@@ -22,4 +23,4 @@ RUN sed -i "/<\/Host>/i\<Context path=\"/${DOC_PATH}\" docBase=\"/opt/apps/${NAM
 EXPOSE 8080
 CMD [ "catalina.sh", "run" ]
 ENTRYPOINT [ "entrypoint.sh" ]
-
+```
