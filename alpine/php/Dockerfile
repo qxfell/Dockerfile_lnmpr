@@ -1,5 +1,5 @@
 FROM alpine:3.6
-MAINTAINER xfell96@163.com
+LABEL maintainer="seth.qiang@gmail.com"
 
 ENV TIMEZONE "Asia/Shanghai"
 RUN echo "http://mirrors.ustc.edu.cn/alpine/v3.6/main/" >/etc/apk/repositories
